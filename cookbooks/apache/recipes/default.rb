@@ -5,12 +5,12 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 if node['platforn_family'] == "rhel"
   package = "httpd"
-elsif nod['platforn_family'] == "debian"
+elsif node['platforn_family'] == "debian"
   package = "apache2"
 end
 
 package 'apache2' do
-  package_name = package
+  package_name  package
   action :install
 end
 
