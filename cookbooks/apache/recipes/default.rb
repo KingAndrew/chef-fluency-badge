@@ -3,16 +3,16 @@
 # Recipe:: default
 # 
 # Copyright:: 2017, The Authors, All Rights Reserved.
-if node['platforn_family'] == "rhel"
+if "rhel" == node['platform_family']
   package = "httpd"
-elsif node['platforn_family'] == "debian"
+elsif  "debian" == node['platform_family']
   package = "apache2"
 end
 
 package 'apache2' do
-  package_name  package
+  package_name package
   action :install
-end
+ end
 
 service 'apache2' do
   service_name 'httpd'
