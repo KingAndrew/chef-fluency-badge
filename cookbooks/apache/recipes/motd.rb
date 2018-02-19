@@ -5,8 +5,13 @@ hostname = node['hostname']
 
 package 'cowsay' do
   action :install
+  notifies :run, 'execute[cowsay]', :immediately
+end
+file '/etc/motd' do
+  
+end
+execute 'cowsay' do
+  command 'hostname | cowsay > /etc/motd'
+  action :nothing
 end
 
-file '/etc/motd' do
-  content "Hostname is this: #{hostname} {fortune | cowsay}" 
-end
